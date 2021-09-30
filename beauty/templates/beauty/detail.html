@@ -1,0 +1,24 @@
+{% extends 'base.html' %}
+{% load static %}
+{% block title %} {{ post }} {% endblock %}
+
+{% block content %}
+<div class="bg-purple">
+    <div class="container d-flex flex-column align-items-center pb-4">
+        <img src="{% static 'beauty/img/0004.png' %}" alt="Notepad" class="img-fluid">
+        <h1 class="text-white">{{ post }}</h1>
+        <p class="text-white">Posted on {{ post.date_create }}</p>
+    </div>
+</div>
+
+<div class="container container-fluid my-5 bg-white pb-5 px-0 break-text">
+    <div class="card-header mt-0 mb-3">
+        <a href="/" class="btn btn-info"><i class="bi bi-arrow-left-square"></i> Back</a>
+    </div>
+    <div class="row mx-auto">
+        <div class="col-lg-12">
+            <div id="content" class="text-justify">{{ post.content | safe }}</div>
+        </div>
+    </div>
+</div>
+{% endblock %}

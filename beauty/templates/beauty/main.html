@@ -1,0 +1,63 @@
+{% extends 'base.html' %}
+{% load static %}
+{% block title %} Home {% endblock %}
+
+{% block content %}
+<div class="bg-purple">
+    <div class="container d-flex flex-column align-items-center">
+        <img src="{% static 'beauty/img/0003.png' %}" alt="Image" class="img-fluid">
+    </div>
+</div>
+
+<!-- profiles -->
+<div class="jumbotron bg-transparent mb-0">
+    <div class="container bg-white">
+
+
+        <div class="row mx-auto">
+
+            <form method="get" class="col-lg-12">
+                <div class="form-group row mx-auto">
+                    <input type="text" name="q" id="q" class="col-lg-11 col-10 form-control mt-5">
+                    <button class="btn btn-primary col-lg-1 col-2 mt-auto"><i class="bi bi-search"></i></button>
+                </div>
+            </form>
+
+            <!-- All Post -->
+            <div class="col-md-12 col-lg-12">
+
+                {% for page in post %}
+                <div class="post-preview">
+                    <a href="{% url 'beauty:detail' page.link %}">
+                        <h2 class="post-title">{{ page }}</h2>
+                    </a>
+                    <p class="post-meta">Created by Bintang on </p>
+                </div>
+                <hr>
+
+                {% endfor %}
+            </div>
+        </div>
+        <div class="d-flex justify-content-center py-4">
+            <nav aria-label="Page navigation example mb-5">
+                <ul class="pagination">
+                    <li class="page-item">
+                        <a class="page-link" href="#" aria-label="Previous">
+                            <span aria-hidden="true">&laquo;</span>
+                        </a>
+                    </li>
+                    <li class="page-item"><a class="page-link" href="#">1</a></li>
+                    <li class="page-item"><a class="page-link" href="#">2</a></li>
+                    <li class="page-item"><a class="page-link" href="#">3</a></li>
+                    <li class="page-item">
+                        <a class="page-link" href="#" aria-label="Next">
+                            <span aria-hidden="true">&raquo;</span>
+                        </a>
+                    </li>
+                </ul>
+            </nav>
+        </div>
+    </div>
+</div>
+<!-- end profiles -->
+{% endblock %}
