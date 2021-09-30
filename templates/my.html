@@ -20,6 +20,32 @@
 </head>
 <body>
 
+<div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title" id="exampleModalLabel">Upload a File</h5>
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                </button>
+            </div>
+            <div class="modal-body">
+                <form action="{% url 'my:media-upload' %}" method="post" enctype="multipart/form-data">
+                    <div class="form-group">
+                        {% csrf_token %}
+                        <input type="file" name="file" id="file" class="form-control-file" multiple>
+                    </div>
+                    <div class="form-group">
+                        <button class="btn btn-primary"><i class="bi bi-cloud-upload"></i> Upload</button>
+                    </div>
+                </form>
+            </div>
+
+        </div>
+    </div>
+</div>
+
+
 <nav class="navbar navbar-expand-lg navbar-light bg-light">
 <!--    <div class="container">-->
         <a class="navbar-brand" href="{% url 'my:home' %}">Cpanel</a>
@@ -45,7 +71,7 @@
                         Dropdown
                     </a>
                     <div class="dropdown-menu" aria-labelledby="navbarDropdown">
-                        <a class="dropdown-item" href="#">Action</a>
+                        <a class="dropdown-item" href="#exampleModal" data-toggle="modal" data-target="#exampleModal">Upload Media</a>
                         <a class="dropdown-item" href="#">Another action</a>
                         <div class="dropdown-divider"></div>
                         <a class="dropdown-item" href="#">Something else here</a>
@@ -94,7 +120,7 @@
                         <div class="col-lg-3 mt-4">
                             <h4>Lokasi</h4>
                             <a href="https://www.google.com/maps/place/SMK+Telkom+Jakarta/@-6.1544783,106.7485692,17z/data=!3m1!4b1!4m5!3m4!1s0x2e69f7c113c644b5:0xa3a809c8c4627262!8m2!3d-6.1544783!4d106.7507579?hl=id"><img
-                                    src="/static/images/lokasi.jpg" class="img-fluid"></a>
+                                    src="/static/images/IT_PLN.png" class="img-fluid"></a>
                         </div>
                     </div>
                 </div>

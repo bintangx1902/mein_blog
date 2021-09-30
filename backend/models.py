@@ -43,6 +43,8 @@ class Post(models.Model):
     keyword = models.TextField(verbose_name="keyword pencarian ")
     date_create = models.DateField(auto_now=True)
     date_update = models.DateField(auto_now_add=True)
+    likes = models.IntegerField(default=0, verbose_name="likes")
+    publish = models.BooleanField(default=True)
 
     def __str__(self):
         return self.title

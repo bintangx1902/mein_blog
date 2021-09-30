@@ -23,9 +23,39 @@
 
 <body>
 
+<!-- modal search -->
+<div class="modal fade" id="modalSearch" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+    <div class="modal-dialog modal-xl">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title" id="exampleModalLabel">Berikan Komentar</h5>
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                </button>
+            </div>
+            <div class="modal-body">
+                <form action="{% url 'beauty:home' %}" method="get">
+                    <div class="form-group">
+                        <label for="searchInput">Search</label>
+                        <input type="text" name="q" id="searchInput" class="form-control">
+                    </div>
+                    <div class="form-group">
+                        <button class="btn btn-primary">Search</button>
+                    </div>
+                </form>
+
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+            </div>
+        </div>
+    </div>
+</div>
+<!-- end modal -->
+
 <nav class="navbar navbar-expand-lg navbar-light bg-light">
 
-    <a class="navbar-brand" href="/">Beauty Care</a>
+    <a class="navbar-brand" href="/">Bintang's Math</a>
     <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNavAltMarkup"
             aria-controls="navbarNavAltMarkup" aria-expanded="false" aria-label="Toggle navigation">
         <span class="navbar-toggler-icon"></span>
@@ -33,9 +63,7 @@
     <div class="collapse navbar-collapse " id="navbarNavAltMarkup">
         <div class="navbar-nav ml-auto">
             <a class="nav-link active" href="/">Home <span class="sr-only">(current)</span></a>
-            <a class="nav-link" href="">List Buku</a>
-            <a class="nav-link" href="">Unggah Buku</a>
-            <a class="nav-link" href="">Peta Perpustakaan</a>
+            <a class="nav-link" href="#modalSearch" data-toggle="modal">Cari Posting <i class="bi bi-search"></i></a>
         </div>
     </div>
 
@@ -61,7 +89,7 @@
                         </div>
                         <div class="col-lg-3 mt-4">
                             <h4>Lokasi</h4>
-                            <img src="{% static 'beauty/img/sman_33.jpg' %}" alt="SMAN 33 Jakarta" class="img-fluid">
+                            <img src="{% static 'beauty/img/ITT_PLN.png' %}" alt="IT PLN Jakartas" class="img-fluid">
                         </div>
                     </div>
                 </div>

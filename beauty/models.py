@@ -13,8 +13,8 @@ class Subscriber(models.Model):
 
 
 class Comment(models.Model):
-    name = models.CharField(max_length=255, verbose_name="Nama anonim kamu : ")
-    content = RichTextField(config_name='comment', verbose_name="Komentar", null=True, blank=True)
+    name = models.CharField(max_length=255, verbose_name="Nama anonim kamu : ", null=True, blank=True)
+    content = models.TextField(verbose_name="Komentar", default='')
     post = models.ForeignKey(Post, related_name="comment", verbose_name="Post Yang Dikomentar",
                              on_delete=models.CASCADE)
 

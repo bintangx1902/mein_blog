@@ -24,14 +24,14 @@
             </form>
 
             <!-- All Post -->
-            <div class="col-md-12 col-lg-12">
+            <div class="col-md-12 col-lg-12" id="post">
 
                 {% for page in post %}
                 <div class="post-preview">
                     <a href="{% url 'beauty:detail' page.link %}">
                         <h2 class="post-title">{{ page }}</h2>
                     </a>
-                    <p class="post-meta">Created by Bintang on </p>
+                    <p class="post-meta">Created by Bintang on {{ page.date_create }}</p>
                 </div>
                 <hr>
 
@@ -39,23 +39,39 @@
             </div>
         </div>
         <div class="d-flex justify-content-center py-4">
-            <nav aria-label="Page navigation example mb-5">
+            {% if is_paginated %}
+            <nav aria-label="Page navigation">
                 <ul class="pagination">
+                    {% if page_obj.has_previous %}
                     <li class="page-item">
-                        <a class="page-link" href="#" aria-label="Previous">
+                        <a class="page-link" href="?page={{ page_obj.previous_page_number }}#post" aria-label="Previous">
                             <span aria-hidden="true">&laquo;</span>
+                            <span class="sr-only">begin</span>
                         </a>
                     </li>
-                    <li class="page-item"><a class="page-link" href="#">1</a></li>
-                    <li class="page-item"><a class="page-link" href="#">2</a></li>
-                    <li class="page-item"><a class="page-link" href="#">3</a></li>
+                    {% endif %}
+
+                    {% for n in page_obj.paginator.page_range %}
+                    {% if page_obj.number == n %}
+                    <li class="page-item active">
+                        <span class="page-link">{{ n }}<span class="sr-only">(current)</span></span>
+                    </li>
+                    {% elif n > page_obj.number|add:'-3' and n < page_obj.number|add:'3' %}
+                    <li class="page-item"><a class="page-link" href="?page={{ n }}#post">{{ n }}</a></li>
+                    {% endif %}
+                    {% endfor %}
+
+                    {% if page_obj.has_next %}
                     <li class="page-item">
-                        <a class="page-link" href="#" aria-label="Next">
+                        <a class="page-link" href="?page={{ page_obj.next_page_number }}#post" aria-label="Next">
                             <span aria-hidden="true">&raquo;</span>
+                            <span class="sr-only">end</span>
                         </a>
                     </li>
+                    {% endif %}
                 </ul>
             </nav>
+            {% endif %}
         </div>
     </div>
 </div>

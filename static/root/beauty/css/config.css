@@ -160,3 +160,40 @@ header.masthead .post-heading .meta a {
 .break-text p {
     word-wrap: break-word;
 }
+
+.btn-pink {
+    background-color: #f64fff !important;
+}
+
+.btn-pink a {
+    background-color: #f64fff !important;
+}
+
+.btn-pink:hover {
+    background-color: #a500ad !important;
+}
+
+.modal-xl {
+    width: 90%;
+    max-width: 1200px;
+}
+
+.modal-dialog {
+    width: 600px;
+    margin: 30px auto;
+}
+
+
+@media (min-width: 768px) {
+    .modal-dialog {
+        width: 600px;
+        margin: 30px auto;
+    }
+}
+
+@media (min-width: 768px) {
+    .modal-xl {
+        width: 90%;
+        max-width: 1200px;
+    }
+}
