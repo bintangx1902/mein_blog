@@ -13,6 +13,8 @@ class AdminHome(ListView):
     template_name = "be/home.html"
     model = Post
     context_object_name = 'post'
+    paginate_by = 10
+    ordering = ['-id']
 
     def dispatch(self, request, *args, **kwargs):
         return super(AdminHome, self).dispatch(request, *args, **kwargs)
