@@ -16,6 +16,7 @@ class AdminHome(ListView):
     paginate_by = 10
     ordering = ['-id']
 
+    @method_decorator(login_required(login_url='/admin/login/'))
     def dispatch(self, request, *args, **kwargs):
         return super(AdminHome, self).dispatch(request, *args, **kwargs)
 
@@ -34,6 +35,10 @@ class CreatePost(CreateView):
         form.instance.link = slug_
         return super(CreatePost, self).form_valid(form)
 
+    @method_decorator(login_required(login_url='/admin/login/'))
+    def dispatch(self, request, *args, **kwargs):
+        return super(CreatePost, self).dispatch(request, *args, **kwargs)
+
 
 class UpdatePost(UpdateView):
     template_name = 'be/update.html'
@@ -46,6 +51,10 @@ class UpdatePost(UpdateView):
     def get_success_url(self):
         return reverse('my:home')
 
+    @method_decorator(login_required(login_url='/admin/login/'))
+    def dispatch(self, request, *args, **kwargs):
+        return super(UpdatePost, self).dispatch(request, *args, **kwargs)
+
 
 class DeletePost(DeleteView):
     model = Post
@@ -57,6 +66,10 @@ class DeletePost(DeleteView):
     def get_success_url(self):
         return reverse('my:home')
 
+    @method_decorator(login_required(login_url='/admin/login'))
+    def dispatch(self, request, *args, **kwargs):
+        return super(DeletePost, self).dispatch(request, *args, **kwargs)
+
 
 class MediaManagerView(ListView):
     model = MediaManager
@@ -67,8 +80,11 @@ class MediaManagerView(ListView):
 
     def get_context_data(self, *, object_list=None, **kwargs):
         context = super(MediaManagerView, self).get_context_data(**kwargs)
-
         return context
+
+    @method_decorator(login_required(login_url='/admin/login/'))
+    def dispatch(self, request, *args, **kwargs):
+        return super(MediaManagerView, self).dispatch(request, *args, **kwargs)
 
 
 class MediaUpload(CreateView):
@@ -88,6 +104,7 @@ class MediaUpload(CreateView):
 
         return super().form_valid(form)
 
+    @method_decorator(login_required(login_url='/admin/login/'))
     def dispatch(self, request, *args, **kwargs):
         if not self.request.FILES.getlist('file'):
             return redirect('my:media-manager')
