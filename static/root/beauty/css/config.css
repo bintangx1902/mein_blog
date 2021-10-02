@@ -183,6 +183,11 @@ header.masthead .post-heading .meta a {
     margin: 30px auto;
 }
 
+#comments1 {
+    max-height: 400px;
+    overflow-y: auto;
+}
+
 
 @media (min-width: 768px) {
     .modal-dialog {
