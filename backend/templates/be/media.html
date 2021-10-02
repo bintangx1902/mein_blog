@@ -45,6 +45,10 @@
                     </div>
                     <div class="card-body">
                         <input type="text" name="img_link" id="img_link_{{file.pk}}" value="{{ file.file.url }}" onclick="copy({{file.pk}})" class="form-control" >
+                        <form action="{% url 'my:delete' file.pk %}" method="post" enctype="multipart/form-data">
+                            {% csrf_token %}
+                            <button class="btn btn-danger col">Delete</button>
+                        </form>
                     </div>
                 </div>
             </div>

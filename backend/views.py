@@ -4,6 +4,7 @@ from .forms import *
 from .utils import staff_required, slug_generator
 from django.contrib.auth.decorators import login_required
 from django.utils.decorators import method_decorator
+from django.http import Http404
 
 
 link = 'link'
@@ -121,7 +122,22 @@ def MediaUploadTest(request):
 
 
 def delete_all_media(request):
+    media = MediaManager.objects.all()
     if request.method == 'POST':
-        media = MediaManager.objects.all()
-        media.delete()
+        for file in media:
+            file.delete()
+
     return redirect("my:media-manager")
+
+
+def delete_media(request, pk):
+    try:
+        to_delete = get_object_or_404(MediaManager, pk=pk)
+    except MediaManager.DoesNotExist:
+        return Http404
+
+    if request.method == 'POST':
+        to_delete.delete()
+
+    return redirect('my:media-manager')
+

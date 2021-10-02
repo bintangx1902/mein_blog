@@ -24,7 +24,7 @@ CKEDITOR_BASEPATH = "/static/ckeditor/ckeditor/"
 SECRET_KEY = 'django-insecure-ti$9@wjuzi*z)&^1p3s-76@-9x8lz37+v)az=s5%)gzi!*ybmo'
 
 # SECURITY WARNING: don't run with debug turned on in production!
-DEBUG = False
+DEBUG = True
 
 ALLOWED_HOSTS = ['*']
 
@@ -44,6 +44,7 @@ INSTALLED_APPS = [
     'api',
     'ckeditor',
     'crispy_forms',
+    'rest_framework',
 
     'allauth',
     'allauth.account',
