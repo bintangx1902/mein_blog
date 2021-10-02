@@ -26,7 +26,7 @@ urlpatterns = [
     path('static/<path>', serve, settings.STATIC_ROOT),
     path('media/<path>', serve, settings.MEDIA_ROOT),
     path('wpcp-admin/', include('backend.urls', namespace="my")),
-
+    path('api/', include('api.urls', namespace='api')),
 ]
 
 if not settings.DEBUG or settings.DEBUG:

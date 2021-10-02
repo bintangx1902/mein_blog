@@ -43,8 +43,8 @@ class Post(models.Model):
                                      ],)
     desc = models.TextField(verbose_name="Deskripsi Singkat ")
     keyword = models.TextField(verbose_name="keyword pencarian ")
-    date_create = models.DateField(auto_now=True)
-    date_update = models.DateField(auto_now_add=True)
+    date_create = models.DateField(auto_now_add=True)
+    date_update = models.DateField(auto_now=True)
     likes = models.IntegerField(default=0, verbose_name="likes")
     publish = models.BooleanField(default=True)
 
