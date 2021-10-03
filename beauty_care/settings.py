@@ -45,6 +45,7 @@ INSTALLED_APPS = [
     'ckeditor',
     'crispy_forms',
     'rest_framework',
+    'corsheaders',
 
     'allauth',
     'allauth.account',
@@ -61,7 +62,11 @@ AUTHENTICATION_BACKENDS = [
 
 SITE_ID = 1
 
+CORS_ALLOW_ALL_ORIGINS = True
+
 MIDDLEWARE = [
+    "corsheaders.middleware.CorsMiddleware",
+
     'django.middleware.security.SecurityMiddleware',
     'django.contrib.sessions.middleware.SessionMiddleware',
     'django.middleware.common.CommonMiddleware',
