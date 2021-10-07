@@ -31,10 +31,18 @@ class CreatePost(CreateView):
         return reverse('my:home')
 
     def form_valid(self, form):
-        get_link = form.cleaned_data['title']
-        slug_ = get_link.replace(' ', '-')
-        form.instance.link = slug_
-        return super(CreatePost, self).form_valid(form)
+        bad_chars = [';', ':', '!', "*", '!', '@', '#', '$', '%', '^', '&', '(', ')']
+        _link = form.cleaned_data['title']
+
+        for i in bad_chars:
+            if bad_chars[7] in _link:
+                _link = _link.replace(i, 'n')
+            _link = _link.replace(i, '')
+
+        _link = _link.replace(' ', '-')
+        form.instance.link = _link.lower()
+
+        return super().form_valid(form)
 
     @method_decorator(login_required(login_url='/admin/login/'))
     def dispatch(self, request, *args, **kwargs):
@@ -50,7 +58,21 @@ class UpdatePost(UpdateView):
     slug_url_kwarg = link
 
     def get_success_url(self):
-        return reverse('my:home')
+        return reverse('my:update', kwargs={'link': str(self.kwargs[link]).lower()})
+
+    def form_valid(self, form):
+        bad_chars = [';', ':', '!', "*", '!', '@', '#', '$', '%', '^', '&', '(', ')']
+        _link = form.cleaned_data['title']
+
+        for i in bad_chars:
+            if bad_chars[7] in _link:
+                _link = _link.replace(i, 'n')
+            _link = _link.replace(i, '')
+
+        _link = _link.replace(' ', '-')
+        form.instance.link = _link.lower()
+
+        return super().form_valid(form)
 
     @method_decorator(login_required(login_url='/admin/login/'))
     def dispatch(self, request, *args, **kwargs):

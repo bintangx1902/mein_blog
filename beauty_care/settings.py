@@ -11,6 +11,7 @@ https://docs.djangoproject.com/en/3.2/ref/settings/
 """
 
 from os.path import join, abspath, dirname
+import os
 
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
 # BASE_DIR = Path(__file__).resolve().parent.parent
@@ -27,6 +28,22 @@ SECRET_KEY = 'django-insecure-ti$9@wjuzi*z)&^1p3s-76@-9x8lz37+v)az=s5%)gzi!*ybmo
 DEBUG = True
 
 ALLOWED_HOSTS = ['*']
+
+# uncomment this part f u want to serve the web app
+
+# os.environ['HTTPS'] = "on"
+# CORS_REPLACE_HTTPS_REFERER = False
+# HOST_SCHEME = "http://"
+# SECURE_PROXY_SSL_HEADER = None
+# SECURE_SSL_REDIRECT = False
+# SESSION_COOKIE_SECURE = True
+# CSRF_COOKIE_SECURE = True
+# SECURE_HSTS_SECONDS = None
+# SECURE_HSTS_INCLUDE_SUBDOMAINS = False
+# SECURE_FRAME_DENY = False
+# SECURE_CONTENT_TYPE_NOSNIFF = False
+# SECURE_BROWSER_XSS_FILTER = False
+# SESSION_COOKIE_HTTPONLY = False
 
 # Application definition
 
