@@ -33,13 +33,18 @@ class CreatePost(CreateView):
     def form_valid(self, form):
         bad_chars = [';', ':', '!', "*", '!', '@', '#', '$', '%', '^', '&', '(', ')']
         _link = form.cleaned_data['title']
+        _link = _link.replace(' ', '-')
 
         for i in bad_chars:
-            if bad_chars[7] in _link:
+            if bad_chars[-3] in _link:
                 _link = _link.replace(i, 'n')
             _link = _link.replace(i, '')
 
-        _link = _link.replace(' ', '-')
+        if _link[-1] == '-':
+            _link = _link[:-1]
+            if _link[-1] == '-':
+                _link = _link[:-1]
+
         form.instance.link = _link.lower()
 
         return super().form_valid(form)
