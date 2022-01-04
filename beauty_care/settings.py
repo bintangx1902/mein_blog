@@ -183,7 +183,7 @@ CKEDITOR_CONFIGS = {
 
         'youtube_responsive': 'true',
         'youtube_controls': 'true',
-        'youtube_disabled_fields': ['txtHeight', 'txtWidth', 'chkOlderCode', 'txtEmbed'],
+        'youtube_disabled_fields': ['txtHeight', 'txtWidth', 'chkOlderCode',],
         'extraPlugins': ','.join([
             'youtube',
             # 'bootstrap',
